@@ -1,9 +1,10 @@
-import { application, Router } from "express";
+import { Router } from "express";
+import { CreateClientController } from "./modules/clients/userCase/createClient/createClientController";
 
 const routes = Router();
 
-routes.get("/", (req, res) => {
-    return res.send("Ola Mundo");
-});
+const createClientController = new CreateClientController()
+
+routes.post("/registraClient", createClientController.handle);
 
 export default routes;
